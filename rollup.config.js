@@ -1,19 +1,21 @@
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
-import postcss from 'rollup-plugin-postcss';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import { terser } from 'rollup-plugin-terser';
+
+const packageJson = require('./package.json');
 
 export default {
   input: 'src/index.ts',
   output: [
     {
-      file: 'dist/index.cjs.js',
+      file: packageJson.main,
       format: 'cjs',
       sourcemap: true,
     },
     {
-      file: 'dist/index.esm.js',
+      file: packageJson.module,
       format: 'esm',
       sourcemap: true,
     },
@@ -23,10 +25,6 @@ export default {
     resolve(),
     commonjs(),
     typescript({ tsconfig: './tsconfig.json' }),
-    postcss({
-      extract: true,
-      minimize: true,
-    }),
+    terser(),
   ],
-  external: ['react', 'react-dom'],
 };
