@@ -13,7 +13,5 @@ This carousel component is not using any "carousel" libraries.
     > If isInfinite is false, the carousel scrolls only through the available cards.
 
 3. Interaction for mobile and desktop.
-    a. Mobile: The carousel is draggable. The scroll speed should reflect the drag speed.
-      - Slow drag: scrolls fewer cards.
-      - Fast drag: scrolls more cards.
-    b. Desktop: The carousel use buttons for navigation.
+    > Mobile: The carousel is draggable. The scroll speed should reflect the drag speed where slow drag scrolls fewer cards while fast drag scrolls more cards.
+    > Desktop: The carousel use buttons for navigation.

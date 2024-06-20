@@ -1,12 +1,9 @@
 {
   "name": "carousel-library",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "private": false, 
   "main": "dist/cjs/index.js", 
   "module": "dist/esm/index.js", 
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "start": "react-scripts start",
     "build": "rollup -c",
@@ -72,5 +69,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "keywords": [
+    "react",
+    "carousel",
+    "storybook"
+  ]
 }
