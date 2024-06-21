@@ -16,7 +16,7 @@ export interface CarouselProps {
 
 const isMobileDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-const Carousel: React.FC<CarouselProps> = ({ children, isInfinite = false }) => {
+const Carousel: React.FC<CarouselProps> = ({ children, isInfinite = false }): any => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -38,13 +38,14 @@ const Carousel: React.FC<CarouselProps> = ({ children, isInfinite = false }) => 
     handleResize();
 
     const resizeObserver = new ResizeObserver(handleResize);
-    if (trackRef.current) {
-      resizeObserver.observe(trackRef.current);
+    const track = trackRef.current;
+    if (track) {
+      resizeObserver.observe(track);
     }
 
     return () => {
-      if (trackRef.current) {
-        resizeObserver.unobserve(trackRef.current);
+      if (track) {
+        resizeObserver.unobserve(track);
       }
     };
   }, []);
@@ -78,11 +79,14 @@ const Carousel: React.FC<CarouselProps> = ({ children, isInfinite = false }) => 
 
   const handleTouchStart = (e: React.TouchEvent) => handleDragStart(e.touches[0].clientX);
 
-  const handleDragMove = (clientX: number) => {
-    if (!isDragging) return;
-    const moveX = clientX - startX;
-    setTranslateX(prevTranslate + moveX);
-  };
+  const handleDragMove = useCallback(
+    (clientX: number) => {
+      if (!isDragging) return;
+      const moveX = clientX - startX;
+      setTranslateX(prevTranslate + moveX);
+    },
+    [isDragging, startX, prevTranslate]
+  );
 
   const handleTouchMove = (e: React.TouchEvent) => handleDragMove(e.touches[0].clientX);
 
