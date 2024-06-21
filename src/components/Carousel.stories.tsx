@@ -7,6 +7,15 @@ interface CarouselProps {
   children: React.ReactNode[];
 }
 
+const generateRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
 export default {
   title: 'Carousel',
   component: Carousel,
@@ -21,11 +30,9 @@ const Template: StoryFn<CarouselProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   isInfinite: true,
-  children: [
-    <div style={{ backgroundColor: '#f6f0dc', height: '200px' }}>Slide 1</div>,
-    <div style={{ backgroundColor: '#c8e5a7', height: '200px' }}>Slide 2</div>,
-    <div style={{ backgroundColor: '#80e285', height: '200px' }}>Slide 3</div>,
-    <div style={{ backgroundColor: '#37b388', height: '200px' }}>Slide 4</div>,
-    <div style={{ backgroundColor: '#00876a', height: '200px' }}>Slide 5</div>,
-  ],
+  children: Array.from({ length: 10 }, (_, i) => (
+    <div style={{ backgroundColor: generateRandomColor(), height: '200px' }}>
+      Slide {i + 1}
+    </div>
+  )),
 };

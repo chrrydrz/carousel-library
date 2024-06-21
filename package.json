@@ -1,9 +1,9 @@
 {
   "name": "carousel-library",
-  "version": "1.0.1",
-  "private": false, 
-  "main": "dist/cjs/index.js", 
-  "module": "dist/esm/index.js", 
+  "version": "1.0.2",
+  "private": false,
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "rollup -c",
@@ -30,6 +30,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@babel/plugin-transform-private-property-in-object": "^7.21.0",
     "@chromatic-com/storybook": "^1.5.0",
     "@storybook/addon-essentials": "^8.1.10",
     "@storybook/addon-interactions": "^8.1.10",
@@ -44,7 +45,7 @@
     "prop-types": "^15.8.1",
     "storybook": "^8.1.10",
     "webpack": "^5.92.1",
-    "rollup": "^3.2.5",
+    "rollup": "^2.79.1",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-typescript": "^11.0.0",

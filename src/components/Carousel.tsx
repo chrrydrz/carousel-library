@@ -14,9 +14,7 @@ export interface CarouselProps {
   children: React.ReactNode[];
 }
 
-const isMobileDevice = () => {
-  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-};
+const isMobileDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
 const Carousel: React.FC<CarouselProps> = ({ children, isInfinite = false }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
